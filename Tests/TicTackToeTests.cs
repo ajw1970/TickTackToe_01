@@ -23,9 +23,14 @@ namespace Tests
         [Fact]
         public void ValidMarks()
         {
-            (0 == 0).Should().BeTrue();
-            (-1 == 0).Should().BeFalse();
-            (9 == 0).Should().BeFalse();
+            IsValid(0).Should().BeTrue();
+            IsValid(-1).Should().BeFalse();
+            IsValid(9).Should().BeFalse();
+        }
+
+        public bool IsValid(int position)
+        {
+            return position == 0;
         }
     }
 }
