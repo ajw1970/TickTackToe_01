@@ -21,9 +21,9 @@ namespace Tests
     public class TicTackToeTests
     {
         [Fact]
-        public void Nothing()
+        public void ValidMarks()
         {
-            true.Should().BeTrue();
+            (0 == 0).Should().BeTrue();
         }
     }
 }
