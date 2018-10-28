@@ -25,6 +25,7 @@ namespace Tests
         {
             (0 == 0).Should().BeTrue();
             (-1 == 0).Should().BeFalse();
+            (9 == 0).Should().BeFalse();
         }
     }
 }
