@@ -27,6 +27,7 @@ namespace Tests
             IsValid(-1).Should().BeFalse();
             IsValid(9).Should().BeFalse();
             IsValid(1).Should().BeTrue();
+            IsValid(8).Should().BeTrue();
         }
 
         public bool IsValid(int position)
