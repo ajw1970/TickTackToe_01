@@ -31,13 +31,13 @@ namespace Tests
         }
 
         [Fact]
-        public void CanScoreGame()
+        public void CanGameBeScored()
         {
-            GameCanBeScored(0).Should().BeFalse();
-            GameCanBeScored(5).Should().BeTrue();
+            IsScorable(0).Should().BeFalse();
+            IsScorable(5).Should().BeTrue();
         }
 
-        public bool GameCanBeScored(int plays)
+        public bool IsScorable(int plays)
         {
             return plays >= 5;
         }
