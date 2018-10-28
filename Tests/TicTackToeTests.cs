@@ -30,6 +30,12 @@ namespace Tests
             IsValid(8).Should().BeTrue();
         }
 
+        [Fact]
+        public void CanScoreGame()
+        {
+            (0 == 5).Should().BeFalse();
+        }
+
         public bool IsValid(int position)
         {
             return position >= 0 && position <= 8;
