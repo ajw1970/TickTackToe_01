@@ -24,6 +24,7 @@ namespace Tests
         public void ValidMarks()
         {
             (0 == 0).Should().BeTrue();
+            (-1 == 0).Should().BeFalse();
         }
     }
 }
