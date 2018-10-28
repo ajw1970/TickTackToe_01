@@ -56,14 +56,14 @@ namespace Tests
         [Fact]
         public void CanExtractPlayerPositions()
         {
-            var plays = "03142";
-            var playerZeroPositions = "";
+            var plays = new List<int> {0, 3, 1, 4, 2};
+            var playerPositions = new List<string> {"", ""};
 
-            for (int i = 0; i < plays.Length; i+=2)
+            for (int i = 0; i < plays.Count; i++)
             {
-                playerZeroPositions += plays[i];
+                playerPositions[i%2] += plays[i];
             }
-            playerZeroPositions.Should().Be("012");
+            playerPositions[0].Should().Be("012");
         }
 
         public bool IsScorable(int plays)
