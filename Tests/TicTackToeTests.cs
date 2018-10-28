@@ -33,8 +33,13 @@ namespace Tests
         [Fact]
         public void CanScoreGame()
         {
-            (0 == 5).Should().BeFalse();
-            (5 == 5).Should().BeTrue();
+            GameCanBeScored(0).Should().BeFalse();
+            GameCanBeScored(5).Should().BeTrue();
+        }
+
+        public bool GameCanBeScored(int plays)
+        {
+            return plays >= 5;
         }
 
         public bool IsValid(int position)
