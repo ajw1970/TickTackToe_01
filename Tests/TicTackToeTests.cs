@@ -53,6 +53,19 @@ namespace Tests
             plays.IndexOf("012").Should().Be(1);
         }
 
+        [Fact]
+        public void CanExtractPlayerPositions()
+        {
+            var plays = "03142";
+            var playerZeroPositions = "";
+
+            for (int i = 0; i < plays.Length; i+=2)
+            {
+                playerZeroPositions += plays[i];
+            }
+            playerZeroPositions.Should().Be("012");
+        }
+
         public bool IsScorable(int plays)
         {
             return plays >= 5;
