@@ -34,6 +34,7 @@ namespace Tests
         public void CanScoreGame()
         {
             (0 == 5).Should().BeFalse();
+            (5 == 5).Should().BeTrue();
         }
 
         public bool IsValid(int position)
