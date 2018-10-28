@@ -37,6 +37,16 @@ namespace Tests
             IsScorable(5).Should().BeTrue();
         }
 
+        [Fact]
+        public void CanDetermineWinner()
+        {
+            var plays = new List<string>
+            {
+                "012", "34"
+            };
+            plays.IndexOf("012").Should().Be(0);
+        }
+
         public bool IsScorable(int plays)
         {
             return plays >= 5;
