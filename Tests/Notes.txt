@@ -1,0 +1,4 @@
+﻿Tick Tack Toe Game
+
+Players take turns marking one of 9 positions on a 3x3 grid.
+Three payer markers that form a horizontal, vertical, or diagonal line wins.
