@@ -45,6 +45,12 @@ namespace Tests
                 "012", "34"
             };
             plays.IndexOf("012").Should().Be(0);
+
+            plays = new List<string>
+            {
+                "346", "012"
+            };
+            plays.IndexOf("012").Should().Be(1);
         }
 
         public bool IsScorable(int plays)
