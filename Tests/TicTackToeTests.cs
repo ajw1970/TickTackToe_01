@@ -68,6 +68,12 @@ namespace Tests
                 playerPositions[i % 2].Add(plays[i]);
             }
             playerPositions[0].Should().BeEquivalentTo(new[] { 0, 1, 2 });
+
+            playerPositions.IndexOf(playerPositions
+                .First(p => 
+                    p.Any(pp => pp == 0) && 
+                    p.Any(pp => pp == 1) && 
+                    p.Any(pp => pp == 2))).Should().Be(0);
         }
 
         public bool IsScorable(int plays)
