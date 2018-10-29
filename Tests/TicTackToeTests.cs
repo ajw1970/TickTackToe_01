@@ -56,14 +56,18 @@ namespace Tests
         [Fact]
         public void CanExtractPlayerPositions()
         {
-            var plays = new List<int> {0, 3, 1, 4, 2};
-            var playerPositions = new List<string> {"", ""};
-
-            for (int i = 0; i < plays.Count; i++)
+            var plays = new List<int> { 0, 3, 1, 4, 2 };
+            var playerPositions = new List<List<int>>
             {
-                playerPositions[i%2] += plays[i];
+                new List<int>(),
+                new List<int>()
+            };
+
+            for (var i = 0; i < plays.Count; i++)
+            {
+                playerPositions[i % 2].Add(plays[i]);
             }
-            playerPositions[0].Should().Be("012");
+            playerPositions[0].Should().BeEquivalentTo(new[] { 0, 1, 2 });
         }
 
         public bool IsScorable(int plays)
