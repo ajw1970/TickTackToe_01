@@ -75,17 +75,18 @@ namespace Tests
                 playerPositions[i % 2].Add(plays[i]);
             }
 
+
             playerPositions.IndexOf(playerPositions
                 .FirstOrDefault(p =>
-                    (p.Any(pp => pp == 0) &&
-                     p.Any(pp => pp == 1) &&
-                     p.Any(pp => pp == 2)) ||
-                    (p.Any(pp => pp == 3) &&
-                     p.Any(pp => pp == 4) &&
-                     p.Any(pp => pp == 5)) ||
-                    (p.Any(pp => pp == 6) &&
-                     p.Any(pp => pp == 7) &&
-                     p.Any(pp => pp == 8))))
+                    (p.Contains(0) &&
+                     p.Contains(1) &&
+                     p.Contains(2)) ||
+                    (p.Contains(3) &&
+                     p.Contains(4) &&
+                     p.Contains(5)) ||
+                    (p.Contains(6) &&
+                     p.Contains(7) &&
+                     p.Contains(8))))
                 .Should().Be(expectedWinner, comment);
         }
 
