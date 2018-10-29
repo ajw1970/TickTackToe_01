@@ -57,6 +57,7 @@ namespace Tests
         [InlineData(new [] { 0, 3, 1, 4, 2 }, 0, "Player 0 Horizontal Win")]
         [InlineData(new[] { 3, 0, 4, 1, 6, 2 }, 1, "Player 1 Horizontal Win")]
         [InlineData(new[] { 3, 0, 4, 1, 6, 8 }, -1, "No Winner")]
+        [InlineData(new[] { 3, 0, 4, 1, 5 }, 0, "Player 0 Horizontal Win")]
         public void CanDetermineWinningPlayerFromPlayedPositions(
             IList<int> plays, 
             int expectedWinner, 
@@ -75,9 +76,13 @@ namespace Tests
 
             playerPositions.IndexOf(playerPositions
                 .FirstOrDefault(p => 
-                    p.Any(pp => pp == 0) && 
-                    p.Any(pp => pp == 1) && 
-                    p.Any(pp => pp == 2))).Should().Be(expectedWinner, comment);
+                    (p.Any(pp => pp == 0) && 
+                     p.Any(pp => pp == 1) && 
+                     p.Any(pp => pp == 2)) ||
+                    (p.Any(pp => pp == 3) &&
+                     p.Any(pp => pp == 4) &&
+                     p.Any(pp => pp == 5))))
+                .Should().Be(expectedWinner, comment);
         }
 
         public bool IsScorable(int plays)
