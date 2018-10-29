@@ -56,6 +56,7 @@ namespace Tests
         [Theory]
         [InlineData(new [] { 0, 3, 1, 4, 2 }, 0, "Player 0 Horizontal Win")]
         [InlineData(new[] { 3, 0, 4, 1, 6, 2 }, 1, "Player 1 Horizontal Win")]
+        [InlineData(new[] { 3, 0, 4, 1, 6, 8 }, -1, "No Winner")]
         public void CanDetermineWinningPlayerFromPlayedPositions(
             IList<int> plays, 
             int expectedWinner, 
@@ -73,7 +74,7 @@ namespace Tests
             }
 
             playerPositions.IndexOf(playerPositions
-                .First(p => 
+                .FirstOrDefault(p => 
                     p.Any(pp => pp == 0) && 
                     p.Any(pp => pp == 1) && 
                     p.Any(pp => pp == 2))).Should().Be(expectedWinner, comment);
