@@ -75,19 +75,22 @@ namespace Tests
                 playerPositions[i % 2].Add(plays[i]);
             }
 
+            var winningPositions = new List<Predicate<IList<int>>>
+            {
+                p => p.Contains(0) && p.Contains(1) && p.Contains(2),
+                p => p.Contains(3) && p.Contains(4) && p.Contains(5),
+                p => p.Contains(6) && p.Contains(7) && p.Contains(8),
+            };
 
-            playerPositions.IndexOf(playerPositions
-                .FirstOrDefault(p =>
-                    (p.Contains(0) &&
-                     p.Contains(1) &&
-                     p.Contains(2)) ||
-                    (p.Contains(3) &&
-                     p.Contains(4) &&
-                     p.Contains(5)) ||
-                    (p.Contains(6) &&
-                     p.Contains(7) &&
-                     p.Contains(8))))
-                .Should().Be(expectedWinner, comment);
+            int winner = -1;
+            foreach (var winningPosition in winningPositions)
+            {
+                winner = playerPositions.IndexOf(playerPositions.FirstOrDefault(p => winningPosition(p)));
+                if (winner != -1)
+                    break;
+            }
+            
+            winner.Should().Be(expectedWinner, comment);
         }
 
         public bool IsScorable(int plays)
