@@ -53,10 +53,13 @@ namespace Tests
             plays.IndexOf("012").Should().Be(1);
         }
 
-        [Fact]
-        public void CanExtractPlayerPositions()
+        [Theory]
+        [InlineData(new [] { 0, 3, 1, 4, 2 }, 0, "Player 0 Horizontal Win")]
+        public void CanDetermineWinningPlayerFromPlayedPositions(
+            IList<int> plays, 
+            int expectedWinner, 
+            string comment)
         {
-            var plays = new List<int> { 0, 3, 1, 4, 2 };
             var playerPositions = new List<List<int>>
             {
                 new List<int>(),
@@ -67,13 +70,12 @@ namespace Tests
             {
                 playerPositions[i % 2].Add(plays[i]);
             }
-            playerPositions[0].Should().BeEquivalentTo(new[] { 0, 1, 2 });
 
             playerPositions.IndexOf(playerPositions
                 .First(p => 
                     p.Any(pp => pp == 0) && 
                     p.Any(pp => pp == 1) && 
-                    p.Any(pp => pp == 2))).Should().Be(0);
+                    p.Any(pp => pp == 2))).Should().Be(expectedWinner, comment);
         }
 
         public bool IsScorable(int plays)
