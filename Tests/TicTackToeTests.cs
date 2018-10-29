@@ -55,6 +55,7 @@ namespace Tests
 
         [Theory]
         [InlineData(new [] { 0, 3, 1, 4, 2 }, 0, "Player 0 Horizontal Win")]
+        [InlineData(new[] { 3, 0, 4, 1, 6, 2 }, 1, "Player 1 Horizontal Win")]
         public void CanDetermineWinningPlayerFromPlayedPositions(
             IList<int> plays, 
             int expectedWinner, 
